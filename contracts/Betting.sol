@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 * The contract can issue "books" of bets which their bookies profit off of. And users can bet on.
 * The ID of a book is emited as an event and a bet ticket is issued as an NFT with incremental interger IDs
  */
-contract Betting is ERC721{
+abstract contract Betting is ERC721{
     uint public constant oneHundredPercent = 10000;
     uint latestId = 0;
     
@@ -91,7 +91,7 @@ contract Betting is ERC721{
             _issueBet(msg.sender, _book, i, each);
         }
         //For the last option send what's left of msg.value in case of rounding errors
-        _issueBet(msg.sender, _book, books[_book].optionsCount, msg.value - sum);
+        _issueBet(msg.sender, _book, books[_book].optionsCount-1, msg.value - sum);
     }
 
     /**

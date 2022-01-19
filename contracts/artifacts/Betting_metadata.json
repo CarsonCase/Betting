@@ -1,0 +1,785 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "approved",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					}
+				],
+				"name": "ApprovalForAll",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "NewBet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "NewBook",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_bookie",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_numOptions",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reductionRate",
+						"type": "uint256"
+					}
+				],
+				"name": "_newBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "betTicketFromNFT",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "book",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "option",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "payout",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "books",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "bookie",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reductionRate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "optionsCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalBets",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "complete",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winner",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_book",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_winner",
+						"type": "uint256"
+					}
+				],
+				"name": "callBet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_book",
+						"type": "bytes32"
+					}
+				],
+				"name": "fundBet",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getApproved",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_book",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_option",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "getOdds",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "isApprovedForAll",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oneHundredPercent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_book",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_option",
+						"type": "uint256"
+					}
+				],
+				"name": "placeBet",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					}
+				],
+				"name": "setApprovalForAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "ticket",
+						"type": "uint256"
+					}
+				],
+				"name": "settleBet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenURI",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Carson Case: carsonpcase@gmail.com",
+			"kind": "dev",
+			"methods": {
+				"_newBook(address,uint256,uint256)": {
+					"details": "_newBook creates a new book.....",
+					"params": {
+						"_bookie": "is the bookie who can fund and collect rees from reducing odds",
+						"_numOptions": "is how many things you can bet on",
+						"reductionRate": "is the rate by which books are reduced. A 2000 (20%) rate would turn 2/3 odds to 3/5 odds "
+					}
+				},
+				"approve(address,uint256)": {
+					"details": "See {IERC721-approve}."
+				},
+				"balanceOf(address)": {
+					"details": "See {IERC721-balanceOf}."
+				},
+				"callBet(bytes32,uint256)": {
+					"details": "Function to call the winner of a bet. Only callable by bookie.",
+					"params": {
+						"_book": "to call",
+						"_winner": "must be within options"
+					}
+				},
+				"constructor": {
+					"details": "constructor"
+				},
+				"fundBet(bytes32)": {
+					"details": "fundBet function for a bookie only to add some liquidity to a bet. People need money to win at the start",
+					"params": {
+						"_book": "the book hash to fund"
+					}
+				},
+				"getApproved(uint256)": {
+					"details": "See {IERC721-getApproved}."
+				},
+				"getOdds(bytes32,uint256,uint256)": {
+					"details": "getOdds somewhat confusingly actually returns the payout amount, not the odds",
+					"params": {
+						"_amount": "is the amount to bet. Your odds depend on this",
+						"_book": "is the book ",
+						"_option": "is the option index to bet on"
+					}
+				},
+				"isApprovedForAll(address,address)": {
+					"details": "See {IERC721-isApprovedForAll}."
+				},
+				"name()": {
+					"details": "See {IERC721Metadata-name}."
+				},
+				"ownerOf(uint256)": {
+					"details": "See {IERC721-ownerOf}."
+				},
+				"placeBet(bytes32,uint256)": {
+					"details": "function to place a bet. Anyone can call on any book as long as the option is included in the book",
+					"params": {
+						"_book": "is the book hash",
+						"_option": "is the option to bet on"
+					}
+				},
+				"safeTransferFrom(address,address,uint256)": {
+					"details": "See {IERC721-safeTransferFrom}."
+				},
+				"safeTransferFrom(address,address,uint256,bytes)": {
+					"details": "See {IERC721-safeTransferFrom}."
+				},
+				"setApprovalForAll(address,bool)": {
+					"details": "See {IERC721-setApprovalForAll}."
+				},
+				"settleBet(uint256)": {
+					"details": "function to collect on a won bet",
+					"params": {
+						"ticket": "is the NFT id to turn in for the winnings"
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "See {IERC165-supportsInterface}."
+				},
+				"symbol()": {
+					"details": "See {IERC721Metadata-symbol}."
+				},
+				"tokenURI(uint256)": {
+					"details": "See {IERC721Metadata-tokenURI}."
+				},
+				"transferFrom(address,address,uint256)": {
+					"details": "See {IERC721-transferFrom}."
+				}
+			},
+			"title": "Betting",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "A contract for betting complete with a bookies reduction rate. The contract can issue \"books\" of bets which their bookies profit off of. And users can bet on. The ID of a book is emited as an event and a bet ticket is issued as an NFT with incremental interger IDs",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Betting.sol": "Betting"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC721/ERC721.sol": {
+			"keccak256": "0x2d9f9af8b84d252e0e7ee716e4cb3ad1b58f3ec6619e4f54f40d4b5e28f75eb7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://43d6abdcb4cd5be9933f526b53f21008e9a7ab75ce134478625cc8ccd3c1a638",
+				"dweb:/ipfs/QmZrzWUYmNANRCvHaMGsJQXYnWCe6HvMmvrqaPn1GEcpJ1"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+			"keccak256": "0xc1c941ad1e580b4623007305921efe2f26fc7320a4edc226234dd707c658a428",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://473e11d739868e0d9f48254ccf84ba63290d6a2321d59a37b74c244a27f9cad7",
+				"dweb:/ipfs/QmUGzDmecP936jzgM7SYyGwR1YgBGsveoHHJTbDfB8jbGF"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0x96877bb2eb8ca360e949ee1bd77b47a14e92e42f79897c350f088f87a3c231d4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://48593d699a4ef6b5bd2efb20d37320e69303fd27d4b59a2b6b8a8e563e608456",
+				"dweb:/ipfs/QmdAPS8uLrzPJEeFZyJVkwTtaL3KB9jo9wJm1UcoJP55wT"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+			"keccak256": "0xb8d11e77eb1ed34a33720edb551d7d6a6b0eee2bfaa40a7024020e1fdf879b16",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c583283c838cc624a96a69eaa823fa92ac5294ec88d417e266c09ea091e0ae62",
+				"dweb:/ipfs/QmNdzitXaFADaxooWpB4WsckkDyr4j6GQRxBjyKXsvEeXv"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0x069b2631bb5b5193a58ccf7a06266c7361bd2c20095667af4402817605627f45",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a4c96fafff76deda5697c3c5c98cade6e6e1b178254544c106bf360c079ce4e",
+				"dweb:/ipfs/QmXmxubE3jnatFgZuN8ay1VV6hZ8WRmhvUjNpeVjki15HX"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395",
+				"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN"
+			]
+		},
+		"@openzeppelin/contracts/utils/Strings.sol": {
+			"keccak256": "0x456e9b3a2bfe189b5249857f624f4139e59331db518483b456c4e587a20552e0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1123c9545decc48a011370ebab4bf53dda98524fa21f9498e68851ba8f0ffc0f",
+				"dweb:/ipfs/QmUpgMg8EFDnv87ePKUjXxXpJT3qwHRj9VDNSnRxu7T9sy"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0x5718c5df9bd67ac68a796961df938821bb5dc0cd4c6118d77e9145afb187409b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d10e1d9b26042424789246603906ad06143bf9a928f4e99de8b5e3bdc662f549",
+				"dweb:/ipfs/Qmejonoaj5MLekPus229rJQHcC6E9dz2xorjHJR84fMfmn"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0xa28007762d9da9db878dd421960c8cb9a10471f47ab5c1b3309bfe48e9e79ff4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://796ab6e88af7bf0e78def0f059310c903af6a312b565344e0ff524a0f26e81c6",
+				"dweb:/ipfs/QmcsVgLgzWdor3UnAztUkXKNGcysm1MPneWksF72AvnwBx"
+			]
+		},
+		"contracts/Betting.sol": {
+			"keccak256": "0x3d6e6a3ea1aabf45142c66a107786bda90220af259d7d8948387058d821eaaa5",
+			"license": "None",
+			"urls": [
+				"bzz-raw://8f7d2a01fbb10c994030a82c1336a1994f6f7d8558e02bdf0f97d4be93acafbe",
+				"dweb:/ipfs/Qmc8JLt9wAomgtayVmmz4TM3zLhyNRyN4epTxBXqC9ZQQ5"
+			]
+		}
+	},
+	"version": 1
+}
